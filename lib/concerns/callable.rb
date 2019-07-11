@@ -1,3 +1,5 @@
+require 'active_support/all'
+
 module Callable
   extend ActiveSupport::Concern
   class_methods do

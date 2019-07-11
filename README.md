@@ -59,8 +59,8 @@ You're free to choose the output format which makes sense to you, we suggest the
 
 **Have fun!**
 
+### Assumptions
 
-I'm assuming that the model already exists that's why I didnt create a migration and that
-I assume that
+I created just the necessary things for the feature to work, I didn't connect with the db or didn't create migrations. If there was a connection with the db I would use FactoryBot and Faker to create the data I need in my tests instead of OpenStruct.
 
-create env variable
+I assumed that in case of error the external API returns a message like: { 'error': 'Request could not be processed' }

@@ -1,22 +1,24 @@
 require 'net/http'
+require './lib/concerns/callable.rb'
 
-class Campaigns::Fetcher
-  include Callable
+module Campaigns
+  class Fetcher
+    include Callable
 
-  attr_reader :campaigns_info
+    def call
+      response = campaigns
+      response.kind_of?(Net::HTTPSuccess) ? JSON(response.body) : error_response
+    end
 
-  CAMPAIGNS_EXTERNAL_API = ENV['AD_SERVICE_API']
+    private
 
-  def call
-    begin
-      uri = URI(CAMPAIGNS_EXTERNAL_API)
-      response = Net::HTTP.get(uri)
-      JSON(response)
-    rescue JSON::ParserError, SocketError => e
-      fail()
+    def campaigns
+      uri = URI(ENV['AD_SERVICE_API'])
+      Net::HTTP.get_response(uri)
+    end
 
+    def error_response
+      { error: 'Could not get campaigns' }
     end
   end
 end
-
-# Fetcher.call(params)

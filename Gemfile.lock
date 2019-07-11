@@ -14,6 +14,12 @@ GEM
       erubi (~> 1.4)
       rails-dom-testing (~> 2.0)
       rails-html-sanitizer (~> 1.0, >= 1.0.3)
+    activemodel (5.2.3)
+      activesupport (= 5.2.3)
+    activerecord (5.2.3)
+      activemodel (= 5.2.3)
+      activesupport (= 5.2.3)
+      arel (>= 9.0)
     activesupport (5.2.3)
       concurrent-ruby (~> 1.0, >= 1.0.2)
       i18n (>= 0.7, < 2)
@@ -21,8 +27,9 @@ GEM
       tzinfo (~> 1.1)
     addressable (2.6.0)
       public_suffix (>= 2.0.2, < 4.0)
+    arel (9.0.0)
     builder (3.2.3)
-    business_process (1.0.3)
+    byebug (11.0.1)
     concurrent-ruby (1.1.5)
     crack (0.4.3)
       safe_yaml (~> 1.0.0)
@@ -92,8 +99,9 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  activerecord
   bundler
-  business_process
+  byebug
   database_cleaner
   factory_bot_rails
   faker
